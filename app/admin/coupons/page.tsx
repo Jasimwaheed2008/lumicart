@@ -1,0 +1,4 @@
+"use client";
+import AdminResource from "@/components/AdminResource";
+export default function Page() { return <AdminResource resource="coupons" title="Coupons" columns={[{ key: "code", label: "Code" }, { key: "type", label: "Type" }, { key: "value", label: "Value" }, { key: "minOrder", label: "Min order" }, { key: "used", label: "Used", render: r => `${r.used}${r.maxUses ? `/${r.maxUses}` : ""}` }, { key: "isActive", label: "Active", render: r => (r.isActive ? "Yes" : "No") }]}
+  fields={[{ key: "code", label: "Code", type: "text" }, { key: "type", label: "Type", type: "select", options: ["percent", "fixed"] }, { key: "value", label: "Value", type: "number" }, { key: "minOrder", label: "Minimum order", type: "number" }, { key: "maxUses", label: "Max uses (optional)", type: "number" }, { key: "expiresAt", label: "Expires (optional)", type: "date" }, { key: "isActive", label: "Active", type: "checkbox" }]} />; }

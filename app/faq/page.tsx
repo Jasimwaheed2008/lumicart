@@ -1,0 +1,4 @@
+import Faq from "@/components/Faq";
+export const metadata = { title: "FAQ" };
+const items: [string, string][] = [["How long does delivery take?", "Standard shipping takes 3–5 days and express takes 1–2 days. Standard shipping is free on orders over $100."], ["Which payment methods do you accept?", "Cash on Delivery is available now. Online card payments are coming soon."], ["How can I track my order?", "Open My Orders or use the Order Tracking page with your order number while logged in."], ["Can I cancel an order?", "Contact us before your order ships and we will cancel it and restore your items to stock."], ["How do coupons work?", "Enter your code at checkout. Some coupons need a minimum order value or have limited uses."]];
+export default function Page() { return <div className="mx-auto max-w-2xl px-4 py-14"><h1 className="mb-8 text-4xl font-bold tracking-tight">Frequently asked questions</h1><Faq items={items} /></div>; }

@@ -1,0 +1,14 @@
+import { z } from "zod";
+const email = z.string().email("Invalid email").max(120).transform(s => s.toLowerCase().trim());
+const password = z.string().min(8, "Password must be at least 8 characters").max(72);
+export const registerSchema = z.object({ name: z.string().trim().min(2, "Name is too short").max(80), email, password });
+export const loginSchema = z.object({ email, password: z.string().min(1).max(72) });
+export const forgotSchema = z.object({ email });
+export const resetSchema = z.object({ token: z.string().length(64), password });
+export const changePasswordSchema = z.object({ current: z.string().min(1), password });
+export const profileSchema = z.object({ name: z.string().trim().min(2).max(80).optional(), phone: z.string().trim().max(30).optional() });
+const objectId = z.string().regex(/^[a-f\d]{24}$/i, "Invalid id");
+const variant = z.record(z.string().max(40)).optional();
+export const cartAddSchema = z.object({ productId: objectId, quantity: z.number().int().min(1).max(20).default(1), variant });
+export const cartSetSchema = z.object({ productId: objectId, quantity: z.number().int().min(0).max(20), variant });
+export const wishlistSchema = z.object({ productId: objectId });
